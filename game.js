@@ -10,6 +10,11 @@ initialize();
 function initialize(){
   gameSequence=[];
   roundSeguence=[];
+  navigator.userAgent.match(/Android/i)?mobileHandler():pcHandler();
+}
+
+
+function pcHandler(){
   $('body').on("keypress",function(){
     $('body').unbind();
     bindButtons();
@@ -17,6 +22,17 @@ function initialize(){
     nextSeq();
   });
 }
+
+function mobileHandler(){
+  //$("#level-title").text("-> Start <-");
+  $("#level-title").on("click",function(){
+    $("#level-title").unbind();
+    bindButtons();
+    $("#level-title").text("Repeat the pattern");
+    nextSeq();
+  });
+}
+
 
 
 ///sound buttons constructor
